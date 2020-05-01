@@ -12,7 +12,7 @@ namespace StringProcessor
 
             foreach (string item in stringCollection)
             {
-                char? lastLetter = null;
+                //char? lastLetter = null;
                 string output = "";
                 foreach (char letter in item)
                 {
@@ -35,13 +35,12 @@ namespace StringProcessor
                     }
 
 
-                    if (lastLetter != outLetter)
+                    if (output.Length == 0 || !output.EndsWith(outLetter.ToString()))
                     {
-                        lastLetter = outLetter;
-                    }
-                    else if (outLetter.HasValue)
-                    {
-                        output += outLetter;
+                        if (outLetter.HasValue)
+                        {
+                            output += outLetter;
+                        }
                     }
                 }
 
