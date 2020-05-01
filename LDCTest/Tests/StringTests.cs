@@ -11,6 +11,7 @@ namespace Tests
 
         public StringTests()
         {
+            processor = new LDCStringProcessor();
         }
 
         [Fact]
