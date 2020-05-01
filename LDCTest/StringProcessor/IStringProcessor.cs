@@ -4,7 +4,8 @@ using System.Text;
 
 namespace StringProcessor
 {
-    class IStringProcessor
+    public interface IStringProcessor
     {
+        List<string> Process(List<string> stringCollection);
     }
 }
