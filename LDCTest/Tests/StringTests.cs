@@ -29,6 +29,26 @@ namespace Tests
         }
 
         [Fact]
+        public void Hardcoded()
+        {
+            List<string> tStrings = new List<string>();
+            List<string> correctStrings = new List<string>();
+
+            tStrings.Add("AA");
+            correctStrings.Add("A");
+
+            tStrings.Add("AAA");
+            correctStrings.Add("A");
+
+            tStrings.Add("AAAc91%cWwWkLq$1ci3_848v3d__K");
+            correctStrings.Add("Ac91%cWwWkLq£1c");
+
+            List<String> processedStrings = processor.Process(tStrings);
+
+            Assert.True(processedStrings.SequenceEqual(correctStrings));
+        }
+
+        [Fact]
         public void NoNulls()
         {
             foreach (string processed in processor.Process(testStrings))
