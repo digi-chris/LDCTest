@@ -15,6 +15,13 @@ namespace Tests
         {
             testStrings = new List<string>();
             testStrings.Add("AAAc91%cWwWkLq$1ci3_848v3d__K");
+
+            for (int i = 10; i < 50; i++)
+            {
+                testStrings.Add(RandomString(i));
+                testStrings.Add(RandomString(i));
+            }
+
             processor = new LDCStringProcessor();
         }
 
@@ -54,9 +61,17 @@ namespace Tests
             {
                 if (processed.Length > 1)
                 {
-                    Assert.False(processed.Where((c, i) => i > 1 && processed[i - 1] == c).Any());
+                    Assert.False(processed.Where((c, i) => i > 1 && processed[i - 1] == c).Any(), "'" + processed + "' contains duplicate characters.");
                 }
             }
+        }
+
+
+        private string RandomString(int length)
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()_+'#@~";
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
