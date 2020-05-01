@@ -46,6 +46,10 @@ namespace StringProcessor
 
                 if (output != "")
                 {
+                    if (output.Length > 15)
+                    {
+                        output = output.Substring(0, 15);
+                    }
                     processedStrings.Add(output);
                 }
             }
