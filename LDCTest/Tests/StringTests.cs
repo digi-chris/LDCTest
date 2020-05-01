@@ -22,6 +22,9 @@ namespace Tests
                 testStrings.Add(RandomString(i));
             }
 
+            testStrings.Add("");
+            testStrings.Add(null);
+
             processor = new LDCStringProcessor();
         }
 

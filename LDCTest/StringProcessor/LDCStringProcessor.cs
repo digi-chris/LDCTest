@@ -12,45 +12,48 @@ namespace StringProcessor
 
             foreach (string item in stringCollection)
             {
-                //char? lastLetter = null;
-                string output = "";
-                foreach (char letter in item)
+                if (item != null)
                 {
-                    char? outLetter;
-
-                    switch (letter)
+                    //char? lastLetter = null;
+                    string output = "";
+                    foreach (char letter in item)
                     {
-                        case '$':
-                            outLetter = '£';
-                            break;
-                        case '_':
-                            outLetter = null;
-                            break;
-                        case '4':
-                            outLetter = null;
-                            break;
-                        default:
-                            outLetter = letter;
-                            break;
-                    }
+                        char? outLetter;
 
-
-                    if (output.Length == 0 || !output.EndsWith(outLetter.ToString()))
-                    {
-                        if (outLetter.HasValue)
+                        switch (letter)
                         {
-                            output += outLetter;
+                            case '$':
+                                outLetter = '£';
+                                break;
+                            case '_':
+                                outLetter = null;
+                                break;
+                            case '4':
+                                outLetter = null;
+                                break;
+                            default:
+                                outLetter = letter;
+                                break;
+                        }
+
+
+                        if (output.Length == 0 || !output.EndsWith(outLetter.ToString()))
+                        {
+                            if (outLetter.HasValue)
+                            {
+                                output += outLetter;
+                            }
                         }
                     }
-                }
 
-                if (output != "")
-                {
-                    if (output.Length > 15)
+                    if (output != "")
                     {
-                        output = output.Substring(0, 15);
+                        if (output.Length > 15)
+                        {
+                            output = output.Substring(0, 15);
+                        }
+                        processedStrings.Add(output);
                     }
-                    processedStrings.Add(output);
                 }
             }
 
