@@ -11,6 +11,7 @@ namespace Tests
         IStringProcessor processor;
         List<string> testStrings;
         const int MAX_STRING_LENGTH = 15;
+        const string ALLOWED_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()_+'#@~";
 
         public StringTests()
         {
@@ -26,8 +27,8 @@ namespace Tests
             // keep this in mind and look to improve the test over time.
             for (int i = 1; i < 50; i++)
             {
-                testStrings.Add(RandomString(i));
-                testStrings.Add(RandomString(i));
+                testStrings.Add(RandomString(i, ALLOWED_CHARS));
+                testStrings.Add(RandomString(i, ALLOWED_CHARS));
             }
 
             // Add an empty string and a null so we test these as well
@@ -124,17 +125,14 @@ namespace Tests
         }
 
         /// <summary>
-        /// A random-character generator for any length of string/
+        /// A random-character generator for any length of string, using a pre-determined list of allowed characters.
         /// </summary>
         /// <param name="length">The length of string that should be returned.</param>
         /// <returns>A string containing randomly-generated characters.</returns>
-        private string RandomString(int length)
+        private string RandomString(int length, string allowedChars)
         {
             Random random = new Random();
-            // NOTE: I'm not too keen on the approach of hard-coding a selection of characters, but at least this gives us the
-            // opportunity to decide what characters should be in the returning string.
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()_+'#@~";
-            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Repeat(allowedChars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
