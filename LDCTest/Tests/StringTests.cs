@@ -101,9 +101,10 @@ namespace Tests
         {
             foreach (string processed in processor.Process(testStrings))
             {
-                Assert.False(processed.IndexOf('$') > -1);
-                Assert.False(processed.IndexOf('_') > -1);
-                Assert.False(processed.IndexOf('4') > -1);
+                foreach (char c in SPECIAL_CHARS)
+                {
+                    Assert.False(processed.IndexOf(c) > -1);
+                }
             }
         }
 
