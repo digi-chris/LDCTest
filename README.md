@@ -21,6 +21,6 @@ Studio.
 
 The sample code implements an `IStringProcessor` interface to help
 loosely-couple the and allow different string processors to be built, however
-the tests are specific to the test conditions.
+the unit tests are specific to the conditions of the challenge.
 
 Hope it all works OK!
