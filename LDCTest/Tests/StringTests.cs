@@ -60,14 +60,12 @@ namespace Tests
             correctStrings.Add("£");
 
             tStrings.Add("444");
-            correctStrings.Add("");
 
             tStrings.Add("___");
-            correctStrings.Add("");
 
             List<String> processedStrings = processor.Process(tStrings);
 
-            Assert.True(processedStrings.SequenceEqual(correctStrings));
+            Assert.True(processedStrings.SequenceEqual(correctStrings), "Returned strings are not as expected:\r\n" + string.Join("\r\n", processedStrings));
         }
 
         /// <summary>
@@ -81,7 +79,6 @@ namespace Tests
                 Assert.NotNull(processed);
             }
         }
-
 
         /// <summary>
         /// Make sure that no returned strings exceed the maximum string length.
