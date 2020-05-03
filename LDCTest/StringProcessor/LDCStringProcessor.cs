@@ -6,6 +6,8 @@ namespace StringProcessor
 {
     public class LDCStringProcessor : IStringProcessor
     {
+        const int MAX_STRING_LENGTH = 15;
+
         public List<string> Process(List<string> stringCollection)
         {
             List<string> processedStrings = new List<string>();
@@ -48,9 +50,9 @@ namespace StringProcessor
 
                     if (output != "")
                     {
-                        if (output.Length > 15)
+                        if (output.Length > MAX_STRING_LENGTH)
                         {
-                            output = output.Substring(0, 15);
+                            output = output.Substring(0, MAX_STRING_LENGTH);
                         }
                         processedStrings.Add(output);
                     }

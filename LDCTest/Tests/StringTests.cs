@@ -10,6 +10,7 @@ namespace Tests
     {
         IStringProcessor processor;
         List<string> testStrings;
+        const int MAX_STRING_LENGTH = 15;
 
         public StringTests()
         {
@@ -82,14 +83,14 @@ namespace Tests
 
 
         /// <summary>
-        /// Make sure that no returned strings exceed the 15-character length.
+        /// Make sure that no returned strings exceed the maximum string length.
         /// </summary>
         [Fact]
         public void LengthExceeded()
         {
             foreach (string processed in processor.Process(testStrings))
             {
-                Assert.False(processed.Length > 15);
+                Assert.False(processed.Length > MAX_STRING_LENGTH);
             }
         }
 
